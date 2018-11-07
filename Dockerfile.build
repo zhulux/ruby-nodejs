@@ -1,0 +1,16 @@
+FROM ruby:2.3.8-alpine3.8
+
+RUN apk add --update --no-cache \
+    build-base \
+    postgresql-dev \
+    git \
+    imagemagick \
+    nodejs-current \
+    yarn \
+    tzdata
+RUN apk --no-cache add --virtual native-deps \
+  g++ gcc libgcc libstdc++ linux-headers make && \
+  apk add --update nodejs nodejs-npm python && \
+  npm install --quiet node-gyp -g &&\
+  npm install --quiet && \
+  apk del native-deps

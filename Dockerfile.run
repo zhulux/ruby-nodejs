@@ -1,0 +1,10 @@
+FROM ruby:2.3.8-alpine3.8
+LABEL Maintainer="account@zhulux.com"
+
+# Add Alpine packages
+RUN apk add --update --no-cache \
+    postgresql-client \
+    imagemagick \
+    tzdata \
+    file \
+    libcurl
