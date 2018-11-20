@@ -36,7 +36,7 @@ try {
 
     stage("Build Image") {
       branchToFile = BranchToFile()
-      image = docker.build("${imageName}","-f ${branchToFile} --build-arg http_proxy=${buildHttpProxy} --build-arg GEM_TOKEN=${gemToken}")
+      image = docker.build("${imageName}","-f ${branchToFile} --build-arg http_proxy=${buildHttpProxy} --build-arg GEM_TOKEN=${gemToken} . ")
     }
 
     stage("Publish Image to Registry") {
