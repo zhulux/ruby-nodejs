@@ -3,12 +3,13 @@ NAME = ruby-nodejs
 DATE = `date +"%Y%m%d"`
 BUILDER_VER = builder-$(DATE)
 RUNER_VER = runer-$(DATE)
+GEM_TOKEN = "xxxx"
 
 echo: 
 	echo "hello world"
 
 build-builder:
-	docker build -t $(NAME):$(BUILDER_VER) -f Dockerfile.build .
+	docker build -t $(NAME):$(BUILDER_VER) -f Dockerfile.build --build-arg GEM_TOKEN=${GEM_TOKEN} .
 
 build-runer:
 	docker build -t $(NAME):$(RUNER_VER) -f Dockerfile.run .
